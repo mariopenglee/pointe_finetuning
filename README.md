@@ -1,5 +1,4 @@
-# nooneisthere
-## a codebase for finetuning the text-to-clouds point-E model.
+# a codebase for finetuning the text-to-clouds point-E model.
 This repository provides a structured codebase for finetuning and inference of Point-E models.
 
 ## summary
