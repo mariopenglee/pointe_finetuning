@@ -2,6 +2,13 @@
 ## a codebase for finetuning the text-to-clouds point-E model.
 This repository provides a structured codebase for finetuning and inference of Point-E models.
 
+## summary
+We're leveraging OpenAI's point-e model, a guided point cloud diffusion model for conditional 3d object generation. Fine tuning on our specific dataset.
+
+### Pipeline
+First, we use the pretrained point-e model, which consists of a gaussian diffusion model and a text conditioning model. Using the text conditioned to image model we generate a synthetic view, this view is then passed into our guided gaussian diffusion model which creates a point cloud. The point cloud can then be converted to 3d meshes through render views.
+
+This is lightweight and allows text-to-3d to be ran locally in a single GPU.
 ## Setup
 
 ### Prerequisites
