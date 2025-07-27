@@ -1,0 +1,28 @@
+# Hardware & device
+device: cuda  # or cpu
+
+# Data settings
+data:
+  csv_path: data/prompts.csv
+  pc_dir: data/pointclouds
+  preload: true
+  batch_size: 4
+  num_workers: 2
+  shuffle: true
+
+# Training hyperparameters
+training:
+  epochs: 100
+  lr: 1e-4
+  weight_decay: 1e-4
+  scheduler:
+    factor: 0.5
+    patience: 5
+  early_stop_patience: 10
+
+# Model configurations\ nmodel:
+  base_model: base40M-textvec
+  upsample_model: upsample
+  guidance_scale:
+    - 3.0
+    - 0.0

@@ -1,0 +1,5 @@
+torch>=1.12
+pandas
+point-e
+tqdm
+pyyaml
