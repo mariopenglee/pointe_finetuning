@@ -23,7 +23,7 @@ class PointCloudTextDataset(Dataset):
             for stem in self.stems:
                 fp = self.pc_dir / f"{stem}_pc.pt"
                 data = torch.load(fp, map_location=self.device)
-                pc = data["pointcloud"]
+                pc = data
                 self._pcs.append(pc.float())
         else:
             self._pcs = None
@@ -39,5 +39,5 @@ class PointCloudTextDataset(Dataset):
             stem = self.stems[idx]
             fp = self.pc_dir / f"{stem}_pc.pt"
             data = torch.load(fp, map_location=self.device)
-            pc   = data["pointcloud"].float()
+            pc   = data.float()
         return prompt, pc

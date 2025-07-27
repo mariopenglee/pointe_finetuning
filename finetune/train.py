@@ -2,8 +2,8 @@ import yaml
 import torch
 from torch.optim.lr_scheduler import ReduceLROnPlateau
 from torch.utils.data import DataLoader
-from pointe_finetune.dataset import PointCloudTextDataset
-from pointe_finetune.model_utils import load_pointe_model, load_pointe_diffusion
+from finetune.dataset import PointCloudTextDataset
+from finetune.model_utils import load_pointe_model, load_pointe_diffusion
 
 
 def main(config_path: str):
@@ -30,9 +30,11 @@ def main(config_path: str):
     )
 
     # Models & Diffusions
+    print("Loading models...")
     base_model = load_pointe_model(cfg['model']['base_model'], device).train()
     diffusion = load_pointe_diffusion(cfg['model']['base_model'])
 
+    print("Loading optimizer and scheduler...")
     optimizer = torch.optim.AdamW(
         base_model.parameters(),
         lr=cfg['training']['lr'],
@@ -42,12 +44,12 @@ def main(config_path: str):
         optimizer,
         factor=cfg['training']['scheduler']['factor'],
         patience=cfg['training']['scheduler']['patience'],
-        verbose=True
     )
 
     best_loss = float('inf')
     patience_counter = 0
 
+    print("Starting training...")
     for epoch in range(1, cfg['training']['epochs'] + 1):
         epoch_loss = 0.0
         for step, (prompts, x_start) in enumerate(loader, 1):

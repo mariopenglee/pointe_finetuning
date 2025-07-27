@@ -3,3 +3,4 @@ pandas
 point-e
 tqdm
 pyyaml
+trimesh

@@ -1,0 +1,7 @@
+
+point-e/
+/data
+/point_e_model_cache
+/outputs
+/finetune/__pycache__
+pointe_finetuned.pt
